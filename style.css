@@ -1,0 +1,77 @@
+:root {
+  --red: #ff3300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-image: linear-gradient(45deg, #ff33d6, #9843ed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 600px;
+  margin: 10px;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.controls {
+  height: 50px;
+  width: 100%;
+  background: rgba(51, 51, 51, 0.6);
+  color: #ffffff;
+  margin-top: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+#range {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 80%;
+  border-radius: 50px;
+  background: var(--red);
+  outline: none;
+  margin: 0 0.5rem;
+}
+
+#range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#range:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+#play {
+  font-size: 20px;
+  width: 50px;
+  background: none;
+  outline: none;
+  border: none;
+  color: var(--red);
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.controls span {
+  font-family: arial;
+  margin: 0 0.5rem;
+}
