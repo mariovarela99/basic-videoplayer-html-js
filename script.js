@@ -14,15 +14,36 @@ range.addEventListener("input", function () {
 });
 
 video.addEventListener("timeupdate", function () {
-  videoTime.innerHTML = Math.floor(video.currentTime);
   range.value = video.currentTime;
   range.max = Math.floor(video.duration);
+
+  const Timer = Timing(video.currentTime);
+  videoTime.innerHTML = `${Math.floor(Timer.hours)}: ${Math.floor(
+    Timer.minutes
+  )}: ${Math.floor(Timer.seconds)}`;
 });
 
 window.onload = () => {
-  videoTime.innerHTML = video.currentTime;
-  videoDuration.innerHTML = Math.floor(video.duration);
+  const Time = Timing(Math.floor(video.duration));
+  const Timer = Timing(video.currentTime);
+  videoTime.innerHTML = `${Timer.hours}: ${Timer.minutes}: ${Timer.seconds}`;
+  videoDuration.innerHTML = `${Math.floor(Time.hours)}: ${Math.floor(
+    Time.minutes
+  )}: ${Math.floor(Time.seconds)}`;
 };
+
+function Timing(time) {
+  const h = time / 3600;
+  const rh = time % 3600;
+  const m = rh / 60;
+  const s = rh % 60;
+
+  return {
+    hours: h,
+    minutes: m,
+    seconds: s,
+  };
+}
 
 window.addEventListener("keydown", function PlayPause(event) {
   if (event.key === " ") {
