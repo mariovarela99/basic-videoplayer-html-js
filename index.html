@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Video Player</title>
+    <title>Basic Video Player</title>
   </head>
   <body>
     <div class="main">
@@ -15,8 +15,10 @@
 
       <div class="controls">
         <button id="play">Play <i class="fas fa-play"></i></button>
-        <span id="videoTime"> </span> /
-        <span id="videoDuration"></span>
+        <div id="timeControl">
+          <span id="videoTime"> </span> /
+          <span id="videoDuration"> </span>
+        </div>
         <input type="range" id="range" value="0" />
       </div>
     </div>
