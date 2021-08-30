@@ -24,6 +24,22 @@ window.onload = () => {
   videoDuration.innerHTML = Math.floor(video.duration);
 };
 
+window.addEventListener("keydown", function PlayPause(event) {
+  if (event.key === " ") {
+    PlayPause();
+  } else {
+    if (event.key === "ArrowRight") {
+      video.currentTime = video.currentTime + 10;
+    } else if (event.key === "ArrowLeft") {
+      if (video.currentTime >= 10) {
+        video.currentTime = video.currentTime - 10;
+      } else {
+        video.currentTime = 0;
+      }
+    }
+  }
+});
+
 function PlayPause() {
   if (video.paused) {
     video.play();
