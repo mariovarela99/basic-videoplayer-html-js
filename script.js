@@ -5,6 +5,26 @@ const videoDuration = document.getElementById("videoDuration");
 const video = document.getElementById("video");
 
 play.addEventListener("click", function () {
+  PlayPause();
+});
+
+range.addEventListener("input", function () {
+  video.currentTime = range.value;
+  range.max = Math.floor(video.duration);
+});
+
+video.addEventListener("timeupdate", function () {
+  videoTime.innerHTML = Math.floor(video.currentTime);
+  range.value = video.currentTime;
+  range.max = Math.floor(video.duration);
+});
+
+window.onload = () => {
+  videoTime.innerHTML = video.currentTime;
+  videoDuration.innerHTML = Math.floor(video.duration);
+};
+
+function PlayPause() {
   if (video.paused) {
     video.play();
     document.querySelector("#play").classList.replace("fa-play", "fa-pause");
@@ -14,20 +34,4 @@ play.addEventListener("click", function () {
     document.querySelector("#play").classList.replace("fa-pause", "fa-play");
     document.querySelector("#play").innerHTML = "Play";
   }
-
-  range.addEventListener("input", function () {
-    video.currentTime = range.value;
-    range.max = Math.floor(video.duration);
-  });
-
-  video.addEventListener("timeupdate", function () {
-    videoTime.innerHTML = Math.floor(video.currentTime);
-    range.value = video.currentTime;
-    range.max = Math.floor(video.duration);
-  });
-});
-
-window.onload = () => {
-  videoTime.innerHTML = video.currentTime;
-  videoDuration.innerHTML = Math.floor(video.duration);
-};
+}
