@@ -4,6 +4,19 @@ const videoTime = document.getElementById("videoTime");
 const videoDuration = document.getElementById("videoDuration");
 const video = document.getElementById("video");
 
+function Timing(time) {
+  const h = time / 3600;
+  const rh = time % 3600;
+  const m = rh / 60;
+  const s = rh % 60;
+
+  return {
+    hours: h,
+    minutes: m,
+    seconds: s,
+  };
+}
+
 play.addEventListener("click", function () {
   PlayPause();
 });
@@ -18,6 +31,7 @@ video.addEventListener("timeupdate", function () {
   range.max = Math.floor(video.duration);
 
   const Timer = Timing(video.currentTime);
+
   videoTime.innerHTML = `${Math.floor(Timer.hours)}: ${Math.floor(
     Timer.minutes
   )}: ${Math.floor(Timer.seconds)}`;
@@ -31,19 +45,6 @@ window.onload = () => {
     Time.minutes
   )}: ${Math.floor(Time.seconds)}`;
 };
-
-function Timing(time) {
-  const h = time / 3600;
-  const rh = time % 3600;
-  const m = rh / 60;
-  const s = rh % 60;
-
-  return {
-    hours: h,
-    minutes: m,
-    seconds: s,
-  };
-}
 
 window.addEventListener("keydown", function PlayPause(event) {
   if (event.key === " ") {
